@@ -1,3 +1,6 @@
 ---
 collections:
-name: fortinet.fortios version: "2.1.6"
+  # Install a collection from Ansible Galaxy.
+  - name: fortinet.fortios
+    version: ">=2.1.6"
+    source: https://galaxy.ansible.com
