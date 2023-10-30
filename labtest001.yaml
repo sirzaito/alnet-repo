@@ -1,7 +1,5 @@
 ---
 - hosts: all
-  collections:
-   - fortinet.fortios
   connection: httpapi
   vars:
    vdom: "root"
