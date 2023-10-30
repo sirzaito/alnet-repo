@@ -6,3 +6,5 @@ collections:
     source: https://galaxy.ansible.com
   - name: paloaltonetworks.panos
     source: https://galaxy.ansible.com
+  - name: ansible.netcommon
+    source: https://galaxy.ansible.com
