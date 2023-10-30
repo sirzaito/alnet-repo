@@ -21,6 +21,6 @@
         - end
         - config router static
         - edit 1
-        - set gateway {{ MGMTIP }}
+        - set gateway {{ MGMTIPGT }}
         - set device "port4"
         - end
