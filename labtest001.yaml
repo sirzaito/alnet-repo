@@ -1,5 +1,5 @@
 ---
-- hosts: LAB-Generic
+- hosts: all
   collections:
    - fortinet.fortios
   connection: httpapi
