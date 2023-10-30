@@ -11,5 +11,7 @@
         prompts:
         - '[>#]'        
         command:
-        - show sys int
-        - show sys zone
+        - config system global
+        - set hostname LAB-TEST-Auto2
+        - end
+        - exit
