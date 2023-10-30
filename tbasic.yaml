@@ -9,6 +9,7 @@
       ansible.netcommon.telnet:
         user: rviews
         password: rviews
+        port: 30210
         login_prompt: 'FortiGate-VM64-KVM login: '
         password_prompt: "Password: "
         prompts:
