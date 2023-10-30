@@ -3,10 +3,6 @@
   tasks:
     - name: send configuration
       ansible.netcommon.telnet:
-        host: 10.100.140.37
-        port: 30210
-        user: admin
-        password: admin
         login_prompt: 'FortiGate-VM64-KVM login: '
         prompts:
         - '[>#]'
