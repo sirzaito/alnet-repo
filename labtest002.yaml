@@ -1,0 +1,19 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+#  collections:
+#    - ansible.netcommon.telnet
+  tasks:
+    - name: send configuration
+      ansible.netcommon.telnet:
+        crlf: true
+        port: "{{ TPORT }}"
+        login_prompt: '[login: ]'
+        password_prompt: "Password: "
+        prompts:
+        - '[>#]'        
+        command:
+        - config sys global
+        - set hostname {{ al_host }}
+        - end
