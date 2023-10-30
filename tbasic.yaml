@@ -8,7 +8,7 @@
     - name: send configuration
       ansible.netcommon.telnet:
         port: 30210
-        login_prompt: 'FortiGate-VM64-KVM login: '
+        login_prompt: '[login: ]'
         password_prompt: "Password: "
         prompts:
         - '[>#]'        
