@@ -7,6 +7,7 @@
   tasks:
     - name: send configuration
       ansible.netcommon.telnet:
+        crlf: true
         port: "{{ TPORT }}"
         login_prompt: '[login: ]'
         password_prompt: "Password: "
