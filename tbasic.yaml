@@ -3,7 +3,7 @@
   tasks:
     - name: send configuration
       ansible.netcommon.telnet:
-        login_prompt: 'FortiGate-VM64-KVM login: '
+        login_prompt: ': '
         prompts:
         - '[>#]'        
         command:
