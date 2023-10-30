@@ -24,6 +24,3 @@
         - set gateway {{ MGMTIP }}
         - set device "port4"
         - end
-        - config sys global
-        - set hostname {{ al_host }}
-        - end
