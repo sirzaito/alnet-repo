@@ -18,7 +18,7 @@
         - edit port4
         - set mode static
         - set ip "{{ MGMTIP }}"/24
-        - set allowaccess ping
+        - set allowaccess ping http https fgfm
         - end
         - config router static
         - edit 1
