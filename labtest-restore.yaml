@@ -1,18 +1,18 @@
 ----
-- hosts: fortigates
-  connection: httpapi
+- hosts: all
   collections:
     - fortinet.fortios
+  connection: httpapi
   vars:
     vdom: "root"
     ansible_httpapi_use_ssl: yes
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 443
   tasks:
-  - name: backup global settings
+  - name: backup global
     fortios_system_config_backup_restore:
-     config: "system config backup"
-     vdom: "{{ vdom }}"
-     backup: "yes"
-     scope: "global"
-     filename: "/tmp/backup_global"
+      config: "system config backup"
+      vdom: "{{ vdom }}"
+      backup: "yes"
+      scope: "global"
+      filename: "/tmp/backup_global"
