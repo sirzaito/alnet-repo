@@ -1,7 +1,7 @@
 ---
 - hosts: all
   collections:
-    - fortinet.fortios
+   - fortinet.fortios
   connection: httpapi
   vars:
    vdom: "root"
@@ -13,4 +13,5 @@
     fortios_system_global:
       vdom:  "{{ vdom }}"
       system_global:
-        admin_host: "myhostname"
+        admintimeout: "23"
+        hostname: "FortiGate02"
