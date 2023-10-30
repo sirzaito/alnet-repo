@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  collections:
+    - ansible.netcommon.telnet
   tasks:
     - name: send configuration
       ansible.netcommon.telnet:
