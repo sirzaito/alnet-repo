@@ -18,6 +18,7 @@
         - edit port4
         - set mode static
         - set ip "{{ MGMTIP }}"/24
+        - set allowaccess ping
         - end
         - config router static
         - edit 1
