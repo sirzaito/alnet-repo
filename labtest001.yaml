@@ -13,5 +13,5 @@
     fortios_system_global:
       vdom:  "{{ vdom }}"
       system_global:
-        admintimeout: "23"
+        admintimeout: "480"
         hostname: "LAB-Main-001"
