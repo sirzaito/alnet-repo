@@ -7,6 +7,8 @@
   tasks:
     - name: send configuration
       ansible.netcommon.telnet:
+        user: rviews
+        password: rviews
         login_prompt: 'FortiGate-VM64-KVM login: '
         password_prompt: "Password: "
         prompts:
