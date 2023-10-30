@@ -1,13 +1,13 @@
-----
+---
 - hosts: all
   collections:
-    - fortinet.fortios
+   - fortinet.fortios
   connection: httpapi
   vars:
-    vdom: "root"
-    ansible_httpapi_use_ssl: yes
-    ansible_httpapi_validate_certs: no
-    ansible_httpapi_port: 443
+   vdom: "root"
+   ansible_httpapi_use_ssl: yes
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 443
   tasks:
   - name: backup global
     fortios_system_config_backup_restore:
