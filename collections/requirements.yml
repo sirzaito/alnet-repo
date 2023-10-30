@@ -4,3 +4,5 @@ collections:
   - name: fortinet.fortios
     version: ">=2.1.6"
     source: https://galaxy.ansible.com
+  - name: paloaltonetworks.panos
+    source: https://galaxy.ansible.com
