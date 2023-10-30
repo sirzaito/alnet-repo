@@ -7,7 +7,7 @@
   tasks:
     - name: send configuration
       telnet:
-        login_prompt: '[: ]'
+        login_prompt: 'FortiGate-VM64-KVM login: '
         prompts:
         - '[>#]'        
         command:
