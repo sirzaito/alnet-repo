@@ -15,9 +15,14 @@
         - '[>#]'        
         command:
         - config system int
-        - edit port3
+        - edit port4
         - set mode static
         - set ip "{{ MGMTIP }}"/24
+        - end
+        - config router static
+        - edit 1
+        - set gateway {{ MGMTIP }}
+        - set device "port4"
         - end
         - config sys global
         - set hostname {{ al_host }}
