@@ -4,8 +4,6 @@
     - name: send configuration
       ansible.netcommon.telnet:
         login_prompt: 'FortiGate-VM64-KVM login: '
-        prompts:
-        - 'FortiGate-VM64-KVM # '
         command:
         - show sys int
         - show sys zone
