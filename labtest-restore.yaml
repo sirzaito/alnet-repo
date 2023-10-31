@@ -17,11 +17,13 @@
        params:
            scope: 'global'
     register: backupinfo
-  
-  - name: Save the backup information.
+
+  - name: Save pre backup
     copy:
        src: '/tmp/{{ al_hostname }}.backup'
        dest: '/tmp/{{ al_hostname }}-001.backup'
+  
+  - name: Save the backup information.
     copy:
        content: '{{ backupinfo.meta.raw }}'
        dest: '/tmp/{{ al_hostname }}.backup'
