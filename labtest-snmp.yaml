@@ -11,10 +11,10 @@
   tasks:
     - name: Define SNMP Community
       fortios_switch_controller_snmp_community:
+        state: "absent"
         switch_controller_snmp_community:
           name: "{{ al_snmp_community }}"
           status: enable
-          state: "absent"
           hosts:
           -
               id: "1"
