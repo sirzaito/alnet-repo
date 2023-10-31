@@ -18,10 +18,9 @@
           hosts:
           -
               id: "1"
-              host_type: "any"
-              ha_direct: "enable"
               ip: "10.100.140.32"
               source_ip: "{{ ansible_host }}"
+          id: "7"
     - name: Enable SNMP SYSINFO
       fortios_switch_controller_snmp_sysinfo:
         status: enable
