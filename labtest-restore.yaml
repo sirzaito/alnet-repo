@@ -16,5 +16,5 @@
   
   - name: Save the backup information.
     copy:
-       content: '{{ backupinfo.meta.raw }}'
+       content: '{{ backupinfo.raw }}'
        dest: '/tmp/local.backup'
