@@ -6,12 +6,15 @@
   vars:
     vdom: "root"
   tasks:
-  - name: backup global or a_specific_vdom settings
-    fortios_system_config_backup_restore:
-     config: "system config backup"
-     vdom: "{{ vdom }}"
-     backup: "yes"
-     https: True
-     ssl_verify: False
-     scope: "global or vdom"
-     filename: "/tmp/backup_test"
+- name: Backup a virtual domain.
+  fortios_monitor_fact:
+     selector: 'system_config_backup'
+     vdom: 'root'
+     params:
+         scope: 'global'
+  register: backupinfo
+
+- name: Save the backup information.
+  copy:
+     content: '{{ backupinfo.meta.raw }}'
+     dest: '/tmp/local.backup'
