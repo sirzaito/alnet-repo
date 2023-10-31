@@ -11,16 +11,16 @@
   tasks:
     - name: Define SNMP Community
       fortios_switch_controller_snmp_community:
-        name: "{{ al_snmp_community }}"
-        status: enable
-        state: absent
         switch_controller_snmp_community:
+          name: "{{ al_snmp_community }}"
+          status: enable
+          state: absent
           hosts:
           -
               id: "1"
               ip: "10.100.140.32"
               source_ip: "{{ ansible_host }}"
-        id: "7"
+          id: "7"
     - name: Enable SNMP SYSINFO
       fortios_switch_controller_snmp_sysinfo:
         status: enable
