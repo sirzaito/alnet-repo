@@ -21,6 +21,7 @@
       state: "present"  
       firewall_policy:
         action: "accept"
+        policyid: "1"
         dstaddr:
           - name: all
         srcaddr:
