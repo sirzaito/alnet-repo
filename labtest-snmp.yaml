@@ -25,4 +25,4 @@
       fortios_system_snmp_sysinfo:
         system_snmp_sysinfo:
           status: enable
-          description: TLABTEST
+          description: "{{ al_desc }}"
