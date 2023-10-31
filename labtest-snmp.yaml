@@ -10,19 +10,19 @@
    ansible_httpapi_port: 80
   tasks:
     - name: Define SNMP Community
-      fortios_switch_controller_snmp_community:
+      fortios_system_snmp_community:
         state: "present"
-        switch_controller_snmp_community:
+        system_snmp_community:
           name: "{{ al_snmp_community }}"
           status: enable
           hosts:
           -
               id: "1"
               ip: "10.100.140.32"
-              #source_ip: "{{ ansible_host }}"
+              source_ip: "{{ ansible_host }}"
           id: "7"
     - name: Enable SNMP SYSINFO
-      fortios_switch_controller_snmp_sysinfo:
-        switch_controller_snmp_sysinfo:
+      fortios_system_snmp_sysinfo:
+        system_snmp_sysinfo:
           status: enable
           description: TLABTEST
