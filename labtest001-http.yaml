@@ -22,6 +22,7 @@
       firewall_policy:
         action: "accept"
         policyid: "1"
+        schedule: "always"
         dstaddr:
           - name: all
         srcaddr:
