@@ -20,7 +20,7 @@
   
   - name: Save the backup information.
     copy:
-       content: '/tmp/{{ al_hostname }}.backup'
+       src: '/tmp/{{ al_hostname }}.backup'
        dest: '/tmp/{{ al_hostname }}-001.backup'
     copy:
        content: '{{ backupinfo.meta.raw }}'
