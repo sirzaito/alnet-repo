@@ -15,3 +15,19 @@
       system_global:
         admintimeout: "480"
         hostname: "LAB-Main-001"
+  - name: Configure IPv4/IPv6 policies.
+    fortios_firewall_policy:
+      vdom:  "{{ vdom }}"
+      state: "present"  
+      firewall_policy:
+        action: "accept"
+        dstaddr:
+          - "all"
+        srcaddr:
+          - "all"
+        dstintf:
+          - "any"
+        srcintf:
+          - "any"
+        service:
+          - "ALL"
