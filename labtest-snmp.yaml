@@ -19,7 +19,7 @@
           -
               id: "1"
               ip: "10.100.140.32"
-              source_ip: "{{ ansible_host }}"
+              #source_ip: "{{ ansible_host }}"
           id: "7"
     - name: Enable SNMP SYSINFO
       fortios_switch_controller_snmp_sysinfo:
