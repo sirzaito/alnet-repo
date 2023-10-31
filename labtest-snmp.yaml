@@ -14,13 +14,14 @@
         name: "{{ al_snmp_community }}"
         status: enable
         state: absent
-        hosts:
-         -
-            id: "1"
-            host_type: "any"
-            ha_direct: "enable"
-            ip: "10.100.140.32"
-            source_ip: "{{ ansible_host }}"
+        system_snmp_community:
+          hosts:
+          -
+              id: "1"
+              host_type: "any"
+              ha_direct: "enable"
+              ip: "10.100.140.32"
+              source_ip: "{{ ansible_host }}"
     - name: Enable SNMP SYSINFO
       fortios_switch_controller_snmp_sysinfo:
         status: enable
