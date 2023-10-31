@@ -22,12 +22,12 @@
       firewall_policy:
         action: "accept"
         dstaddr:
-          - "all"
+          - name: all
         srcaddr:
-          - "all"
+          - name: all
         dstintf:
-          - "any"
+          - name: any
         srcintf:
-          - "any"
+          - name: any
         service:
-          - "ALL"
+          - name: ALL
