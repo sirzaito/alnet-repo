@@ -1,0 +1,22 @@
+---
+- hosts: all
+  collections:
+   - fortinet.fortios
+  connection: httpapi
+  vars:
+   vdom: "root"
+   ansible_httpapi_use_ssl: no
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 80
+  tasks:
+    - name: Define SNMP Community
+      fortios_switch_controller_snmp_community:
+        name: {{ al_snmp_community }}
+        hosts:
+         -
+            id: "1"
+            ip: "10.100.140.32"
+    - name: Enable SNMP SYSINFO
+      fortios_switch_controller_snmp_sysinfo:
+        status: enable
+        description: TLABTEST
