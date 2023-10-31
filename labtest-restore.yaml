@@ -21,4 +21,4 @@
   - name: Save the backup information.
     copy:
        content: '{{ backupinfo.meta.raw }}'
-       dest: '/tmp/local.backup'
+       dest: '/tmp/{{ al_hostname }}.backup'
