@@ -6,6 +6,9 @@
   vars:
     vdom: "root"
     ansible_network_os: fortinet.fortios.fortios
+     ansible_httpapi_use_ssl: yes
+     ansible_httpapi_validate_certs: no
+     ansible_httpapi_port: 443
   tasks:
   - name: Backup a virtual domain.
     fortios_monitor_fact:
@@ -17,5 +20,5 @@
   
   - name: Save the backup information.
     copy:
-       content: '{{ backupinfo }}'
+       content: '{{ backupinfo.meta.raw }}'
        dest: '/tmp/local.backup'
