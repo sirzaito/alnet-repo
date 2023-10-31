@@ -5,6 +5,7 @@
     - fortinet.fortios
   vars:
     vdom: "root"
+    ansible_network_os: fortinet.fortios.fortios
   tasks:
   - name: Backup a virtual domain.
     fortios_monitor_fact:
