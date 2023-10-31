@@ -14,7 +14,7 @@
         name: "{{ al_snmp_community }}"
         status: enable
         state: absent
-        system_snmp_community:
+        switch_controller_snmp_community:
           hosts:
           -
               id: "1"
