@@ -1,0 +1,24 @@
+- hosts: all
+  collections:
+    - fortinet.fortios
+  connection: httpapi
+  vars:
+   vdom: "root"
+   ansible_httpapi_use_ssl: no # change on PRO Env
+   ansible_httpapi_validate_certs: no
+   ansible_httpapi_port: 80 # change on PRO Env
+  tasks:
+  - name: Configure TACACS+ server entries.
+    fortios_user_tacacsplus:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      user_tacacsplus:
+        authen_type: "pap"  # change on PRO Env
+        authorization: "enable"
+        interface: "port4"
+        interface_select_method: "auto"
+        key: "{{ al_tacacas_key }}"
+        name: "default_name_8"
+        port: "49"
+        server: "{{ al_tacacs_srv }}"
+        source_ip: "{{ ansible_host }}"
