@@ -14,5 +14,5 @@
     fortios_system_config_backup_restore:
      config: "system config restore"
      vdom:  "{{ vdom }}"
-     scope: "global or vdom"
+     scope: "global"
      filename: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
