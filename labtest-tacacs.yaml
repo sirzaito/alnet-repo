@@ -17,7 +17,7 @@
         authorization: "enable"
         interface: "port4"
         interface_select_method: "auto"
-        key: "{{ al_tacacas_key }}"
+        key: "{{ al_tacacs_key }}"
         name: "default_name_8"
         port: "49"
         server: "{{ al_tacacs_srv }}"
