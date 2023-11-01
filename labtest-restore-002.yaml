@@ -12,7 +12,7 @@
         login_prompt: '[login: ]'
         password_prompt: "Password: "
         prompts:
-        - '[>#]'        
+        - '[>#)]'        
         command:
         - execute factoryreset2
         - y
