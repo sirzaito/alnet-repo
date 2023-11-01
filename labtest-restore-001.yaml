@@ -1,0 +1,18 @@
+---
+- hosts: all
+  connection: httpapi
+  collections:
+    - fortinet.fortios
+  vars:
+    vdom: "root"
+    ansible_network_os: fortinet.fortios.fortios
+    ansible_httpapi_use_ssl: no
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 80
+  tasks:
+  - name: Restore global or a_specific_vdom settings
+    fortios_system_config_backup_restore:
+     config: "system config restore"
+     vdom:  "{{ vdom }}"
+     scope: "global or vdom"
+     filename: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
