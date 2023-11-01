@@ -1,0 +1,18 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+#  collections:
+#    - ansible.netcommon.telnet
+  tasks:
+    - name: send configuration
+      ansible.netcommon.telnet:
+        crlf: true
+        port: "{{ al_tport }}"
+        login_prompt: '[login: ]'
+        password_prompt: "Password: "
+        prompts:
+        - '[>#]'        
+        command:
+        - execute factoryreset2
+        - y
