@@ -20,10 +20,10 @@
 
   - name: Save pre backup
     copy:
-       src: '/tmp/{{ al_directory }}{{ al_hostname }}.backup'
-       dest: '/tmp/{{ al_directory }}{{ al_hostname }}-001.backup'
+       src: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
+       dest: '/labbackup/{{ al_directory }}{{ al_hostname }}-001.backup'
   
   - name: Save the backup information.
     copy:
        content: '{{ backupinfo.meta.raw }}'
-       dest: '/tmp/{{ al_directory }}{{ al_hostname }}.backup'
+       dest: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
