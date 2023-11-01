@@ -10,9 +10,12 @@
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 80
   tasks:
-  - name: Restore global or a_specific_vdom settings
-    fortios_system_config_backup_restore:
-     config: "system config restore"
-     vdom:  "{{ vdom }}"
-     scope: "global"
-     filename: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
+  - name: Restore from file.
+    fortios_monitor:
+      selector: 'restore.system.config'
+      vdom: 'root'
+      params:
+          scope: 'global'
+          source: 'upload'
+          vdom: 'root'
+          file_content: "{{ lookup( 'file', '/labbackup/{{ al_directory }}{{ al_hostname }}.backup') | string | b64encode }}"
