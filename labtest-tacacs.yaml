@@ -28,6 +28,7 @@
       state: "present"
       user_group:
         group_type: firewall
+        name: "T-Group"
         match:
           - 
               group_name: "any"
