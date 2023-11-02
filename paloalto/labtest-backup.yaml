@@ -1,6 +1,7 @@
 
 - hosts: all
-  configs_dir: "/labbackup/test"
+  vars:
+    configs_dir: "/labbackup/test"
   tasks:
 
     - name: Get ansible date/time facts
