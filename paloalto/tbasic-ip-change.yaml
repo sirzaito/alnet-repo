@@ -16,7 +16,7 @@
         xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system"
         element: |
           <type>
-            <static>
+            <static></static>
           </type>
           <ip-address>{{ MGMTIP }}</ip-address>
           <netmask>{{ MGMTIPMASK }}</netmask>
