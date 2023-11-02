@@ -14,7 +14,7 @@
         method: GET
       register: key_string
 
-    - name: Extract API Key from XML Output
+    - name: Extract API Key from XML Output 
       
       xml:
         xmlstring: '{{key_string.content}}'
