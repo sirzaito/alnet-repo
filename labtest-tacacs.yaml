@@ -13,7 +13,7 @@
       vdom:  "{{ vdom }}"
       state: "present"
       user_tacacsplus:
-        authen_type: "pap"  # change on PRO Env
+        authen_type: "chap"  # change on PRO Env
         authorization: "enable"
         interface: "port4"
         interface_select_method: "auto"
