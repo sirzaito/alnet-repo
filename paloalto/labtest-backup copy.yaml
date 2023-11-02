@@ -18,6 +18,10 @@
        path: ./{{configs_dir}}/{{al_directory.DTG}}
        state: directory
 
+- name: Pull Configuration from Palo Alto Firewalls
+  hosts: all
+  tasks:
+
     - name: Generate API Key
       connection: local
       check_mode: no
