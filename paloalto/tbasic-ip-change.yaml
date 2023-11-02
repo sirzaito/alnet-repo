@@ -1,0 +1,24 @@
+- name: Palo Alto Playbook
+  hosts: all
+  connection: local
+  vars:
+    palo_provider:
+      ip_address: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+  collections:
+    - paloaltonetworks.panos
+
+  tasks: 
+    - name: Set new MGMT IP via API
+      paloaltonetworks.panos.panos_config_element:
+        provider: '{{ palo_provider }}'
+        xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system"
+        element: |
+          <ip-address>{{ MGMTIP }}</ip-address>
+          <netmask>{{ MGMTIPMASK }}</netmask>
+          <default-gateway>{{ MGMTIPGT }}</default-gateway>
+
+#    - name: Commit 
+#      panos_commit_firewall:
+#        provider: '{{ palo_provider }}'        

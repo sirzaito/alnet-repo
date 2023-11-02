@@ -56,7 +56,7 @@
             |                 email@example.com                           |
             +-------------------------------------------------------------+
         commit: false
-    - name: Set SNMP device community and Info via API call
+    - name: Set SNMP device community and Info via API
       paloaltonetworks.panos.panos_config_element:
         provider: '{{ palo_provider }}'
         xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system/snmp-setting"
@@ -73,6 +73,6 @@
             <contact>Admin</contact>
           </snmp-system>
 
-#    - name: Commit 
-#      panos_commit_firewall:
-#        provider: '{{ palo_provider }}'        
+    - name: Commit 
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'        
