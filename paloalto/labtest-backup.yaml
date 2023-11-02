@@ -13,9 +13,9 @@
       set_fact:
         DTG: "{{ ansible_date_time.date }}"
 
-    - name: Create Directory {{hostvars.localhost.DTG}}
+    - name: Create Directory {{al_directory.DTG}}
       file:
-       path: ./{{configs_dir}}/{{hostvars.localhost.DTG}}
+       path: ./{{configs_dir}}/{{al_directory.DTG}}
        state: directory
 
 - name: Pull Configuration from Palo Alto Firewalls
@@ -55,5 +55,5 @@
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
-        dest: '{{configs_dir}}{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.xml'
+        dest: '{{configs_dir}}{{al_directory.DTG}}/{{inventory_hostname}}-{{al_directory.DTG}}-config.xml'
  
