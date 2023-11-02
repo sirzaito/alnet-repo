@@ -59,12 +59,20 @@
     - name: Set SNMP device
       paloaltonetworks.panos.panos_config_element:
         provider: '{{ palo_provider }}'
-        xpath: "/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address"
+        xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system/snmp-setting"
         element: |
-          <entry name="Test-One">
-            <ip-netmask>1.1.1.1</ip-netmask>
-          </entry>
-          
+          <access-setting>
+            <version>
+              <v2c>
+                <snmp-community-string>{{ al_snmp_community }}</snmp-community-string>
+              </v2c>
+            </version>
+          </access-setting>
+          <snmp-system>
+            <location>{{ al_directory }}</location>
+            <contact>Admin</contact>
+          </snmp-system>
+
 #    - name: Commit 
 #      panos_commit_firewall:
 #        provider: '{{ palo_provider }}'        
