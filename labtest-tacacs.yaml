@@ -8,7 +8,7 @@
    ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 80 # change on PRO Env
   tasks:
-  - name: Configure TACACS+ server entries.
+  - name: Configure TACACS+ Server entries.
     fortios_user_tacacsplus:
       vdom:  "{{ vdom }}"
       state: "present"
@@ -18,7 +18,18 @@
         interface: "port4"
         interface_select_method: "auto"
         key: "{{ al_tacacs_key }}"
-        name: "default_name_8"
+        name: "ALNet-TACACS"
         port: "49"
         server: "{{ al_tacacs_srv }}"
         source_ip: "{{ ansible_host }}"
+  - name: Configure TACACS+ User Group
+    fortios_user_group:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      user_group:
+        group_type: firewall
+        match:
+          - 
+              group_name: "any"
+              id: "1"
+              server_name: "ALNet-TACACS"
