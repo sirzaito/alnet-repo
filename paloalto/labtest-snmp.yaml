@@ -15,7 +15,7 @@
       panos_snmp_v2c_server:
         provider: '{{ palo_provider }}'
         snmp_profile: "{{ al_snmp_profile_name }}"
-        name: '"{{ al_snmp_server_name }}"'
+        name: "{{ al_snmp_server_name }}"
         manager: "{{ al_snmp_server_ip }}"
         community: "{{ al_snmp_community }}"
 
