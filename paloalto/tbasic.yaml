@@ -56,7 +56,15 @@
             |                 email@example.com                           |
             +-------------------------------------------------------------+
         commit: false
-
-    - name: Commit 
-      panos_commit_firewall:
-        provider: '{{ palo_provider }}'        
+    - name: Set SNMP device
+      paloaltonetworks.panos.panos_config_element:
+        provider: '{{ palo_provider }}'
+        xpath: "/config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address"
+        element: |
+          <entry name="Test-One">
+            <ip-netmask>1.1.1.1</ip-netmask>
+          </entry>
+          
+#    - name: Commit 
+#      panos_commit_firewall:
+#        provider: '{{ palo_provider }}'        
