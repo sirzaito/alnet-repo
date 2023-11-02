@@ -37,4 +37,4 @@
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
-        dest: '{{configs_dir}}{{al_directory}}{{inventory_hostname}}-{{al_directory}}-config.xml'
+        dest: '{{configs_dir}}{{al_directory}}xxxx-config.xml'
