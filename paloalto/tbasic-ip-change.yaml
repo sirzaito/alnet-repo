@@ -15,6 +15,9 @@
         provider: '{{ palo_provider }}'
         xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system"
         element: |
+          <type>
+            <static>
+          </type>
           <ip-address>{{ MGMTIP }}</ip-address>
           <netmask>{{ MGMTIPMASK }}</netmask>
           <default-gateway>{{ MGMTIPGT }}</default-gateway>
