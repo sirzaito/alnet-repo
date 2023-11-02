@@ -31,4 +31,10 @@
         return_content: yes
         method: GET
       register: configuration_string
- 
+  
+    - name: Remove XML Header and Save file in {{configs_dir}}
+      
+      check_mode: no
+      copy:
+        content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
+        dest: '{{configs_dir}}{{al_directory}}/{{inventory_hostname}}-{{al_directory}}-config.xml'
