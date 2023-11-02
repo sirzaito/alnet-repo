@@ -32,3 +32,9 @@
         member:
           - 
               name: "ALNet-TACACS"
+  - name: Configure Admin user for TACACS+
+    fortios_system_admin:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      accprofile: "prof_admin"
+      remote_group: "T-Group"
