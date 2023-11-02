@@ -1,0 +1,38 @@
+- name: Palo Alto Playbook
+  hosts: all
+  connection: local
+  vars:
+    provider:
+      ip_address: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+  collections:
+    - paloaltonetworks.panos
+
+  tasks: 
+
+    - name: Set Hostname 
+      panos_mgtconfig: 
+        provider: '{{ palo_provider }}'
+        hostname: '{{ hostname }}'
+
+    - name: Set DNS and Panorama
+      panos_mgtconfig: 
+        provider: '{{ palo_provider }}'
+        dns_server_primary: '{{ dns_primary_ip }}'
+#        dns_server_secondary: '{{ dns_secondary_ip }}'
+#        panorama_primary: '{{ panorama_primary_ip }}'
+#        panorama_secondary: '{{ panorama_secondary_ip }}'
+        commit: false
+    
+#    - name: Set backup user account 
+#      panos_administrator:
+#        provider: '{{ palo_provider }}'
+#        admin_username: '{{ adminusername }}'
+#        admin_password: '{{ adminpassword }}'
+#        superuser: true
+#        commit: false 
+
+#    - name: Commit 
+#      panos_commit_firewall:
+#        provider: '{{ palo_provider }}'        
