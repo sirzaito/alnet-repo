@@ -11,10 +11,15 @@
     - paloaltonetworks.panos
 
   tasks: 
-    - name: Create snmp v2 server
+    - name: Create SNMP v2 server
       panos_snmp_v2c_server:
         provider: '{{ provider }}'
         snmp_profile: "{{ al_snmp_profile_name }}"
         name: '"{{ al_snmp_server_name }}"'
         manager: "{{ al_snmp_server_ip }}"
         community: "{{ al_snmp_community }}"
+        commit: false
+
+    - name: Commit 
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'     
