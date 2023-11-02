@@ -35,6 +35,7 @@
 
     - name: Generic management settings
       panos_mgtconfig:
+        provider: '{{ palo_provider }}'
         login_banner: |
             +-------------------------------------------------------------+
             |               !!! Authorized access only !!!                |
