@@ -1,10 +1,11 @@
 ---
 - hosts: all
+  connection: local
   vars:
     configs_dir: "./labbackup/test/"
   tasks:
     - name: Generate API Key
-      connection: local
+      
       check_mode: no
       uri:
         validate_certs: no
@@ -14,7 +15,7 @@
       register: key_string
 
     - name: Extract API Key from XML Output
-      connection: local
+      
       xml:
         xmlstring: '{{key_string.content}}'
         content: 'text'
@@ -22,7 +23,7 @@
       register: key_list
 
     - name: Backup configuration from PAN Equipment
-      connection: local
+      
       check_mode: no
       uri:
         validate_certs: no
@@ -32,7 +33,7 @@
       register: configuration_string
   
     - name: Remove XML Header and Save file in {{configs_dir}}
-      connection: local
+      
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
