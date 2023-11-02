@@ -33,6 +33,6 @@
 #        superuser: true
 #        commit: false 
 
-#    - name: Commit 
-#      panos_commit_firewall:
-#        provider: '{{ palo_provider }}'        
+    - name: Commit 
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'        
