@@ -2,7 +2,7 @@
 - hosts: all
   connection: local
   vars:
-    configs_dir: "./labbackup/test/"
+    configs_dir: "/labbackup/test/"
   tasks:
     - name: Generate API Key
       
