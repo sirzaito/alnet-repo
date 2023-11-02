@@ -18,7 +18,6 @@
         name: '"{{ al_snmp_server_name }}"'
         manager: "{{ al_snmp_server_ip }}"
         community: "{{ al_snmp_community }}"
-        commit: false
 
     - name: Commit 
       panos_commit_firewall:
