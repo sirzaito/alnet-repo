@@ -36,5 +36,6 @@
     fortios_system_admin:
       vdom:  "{{ vdom }}"
       state: "present"
-      accprofile: "prof_admin"
-      remote_group: "T-Group"
+      system_admin:
+        accprofile: "prof_admin"
+        remote_group: "T-Group"
