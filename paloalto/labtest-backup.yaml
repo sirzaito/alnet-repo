@@ -3,21 +3,6 @@
   vars:
     configs_dir: "./labbackup/test/"
   tasks:
-
-    - name: Get ansible date/time facts
-      setup:
-        filter: "ansible_date_time"
-        gather_subset: "!all"
-
-    - name: Store DTG as fact
-      set_fact:
-        DTG: "{{ ansible_date_time.date }}"
-
-    - name: Create Directory {{al_directory.DTG}}
-      file:
-       path: ./{{configs_dir}}/{{al_directory.DTG}}
-       state: directory
-
     - name: Generate API Key
       connection: local
       check_mode: no
