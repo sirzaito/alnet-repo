@@ -42,3 +42,4 @@
         remote_auth: "enable"
         wildcard: "enable"
         remote_group: "T-Group"
+        vdom:  "{{ vdom }}"
