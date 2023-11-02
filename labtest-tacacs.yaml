@@ -29,8 +29,6 @@
       user_group:
         group_type: firewall
         name: "T-Group"
-        match:
+        member:
           - 
-              group_name: "any"
-              id: "1"
-              server_name: "ALNet-TACACS"
+              name: "ALNet-TACACS"
