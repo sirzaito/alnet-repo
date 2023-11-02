@@ -33,7 +33,7 @@
 #        superuser: true
 #        commit: false 
 
-    - name: Generic management settings
+    - name: Set Banner configuration
       panos_mgtconfig:
         provider: '{{ palo_provider }}'
         login_banner: |
