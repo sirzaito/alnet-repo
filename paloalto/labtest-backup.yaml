@@ -12,7 +12,12 @@
 
     - name: Store DTG as fact
       set_fact:
-        DTG: "{{ ansible_date_time.date }}"    
+        DTG: "{{ ansible_date_time.date }}"
+
+    - name: Create Directory {{al_directory}}/
+      file:
+       path: {{configs_dir}}{{al_directory}}-{{DTG}}/
+       state: directory        
 
     - name: Generate API Key      
       check_mode: no
