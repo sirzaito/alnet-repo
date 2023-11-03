@@ -3,7 +3,7 @@
   connection: local
   gather_facts: no
   vars:
-    configs_dir: "/labbackup/test/"
+    configs_dir: "/labbackup/"
   tasks:
     - name: Generate API Key
       
