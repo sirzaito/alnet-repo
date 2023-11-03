@@ -10,6 +10,20 @@
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 80
   tasks:
+    - name: Get ansible date/time facts
+      setup:
+        filter: "ansible_date_time"
+        gather_subset: "!all"
+
+    - name: Store DTG as fact
+      set_fact:
+        DTG: "{{ ansible_date_time.date }}"
+
+    - name: Create Directory {{al_directory}}
+      file:
+       path: '{{configs_dir}}{{al_directory}}'
+       state: directory   
+
   - name: Backup a virtual domain.
     fortios_monitor_fact:
        selector: 'system_config_backup'
@@ -18,12 +32,7 @@
            scope: 'global'
     register: backupinfo
 
-  - name: Save pre backup
-    copy:
-       src: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
-       dest: '/labbackup/{{ al_directory }}{{ al_hostname }}-001.backup'
-  
   - name: Save the backup information.
     copy:
        content: '{{ backupinfo.meta.raw }}'
-       dest: '/labbackup/{{ al_directory }}{{ al_hostname }}.backup'
+       dest: '/labbackup/{{ al_directory }}{{ al_hostname }}_{{ DTG }}.backup'
