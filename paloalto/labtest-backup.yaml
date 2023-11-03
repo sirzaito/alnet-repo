@@ -16,7 +16,7 @@
 
     - name: Create Directory {{al_directory}}/
       file:
-       path: {{configs_dir}}{{al_directory}}/{{DTG}}/
+       path: '{{configs_dir}}{{al_directory}}/{{DTG}}/'
        state: directory        
 
     - name: Generate API Key      
