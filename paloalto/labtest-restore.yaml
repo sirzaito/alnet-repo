@@ -4,6 +4,13 @@
   gather_facts: no
   vars:
     configs_dir: "/labbackup/"
+    palo_provider:
+      ip_address: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+  collections:
+    - paloaltonetworks.panos
+          
   tasks:
     - name: Push  configurations on each devices from the {{ configs_dir }} directory
       connection: local
