@@ -9,6 +9,7 @@
     ansible_httpapi_use_ssl: no
     ansible_httpapi_validate_certs: no
     ansible_httpapi_port: 80
+    configs_dir: "/labbackup/"
   tasks:
     - name: Get ansible date/time facts
       setup:
@@ -35,4 +36,4 @@
     - name: Save the backup information.
       copy:
         content: '{{ backupinfo.meta.raw }}'
-        dest: '/labbackup/{{ al_directory }}{{ al_hostname }}_{{ DTG }}.backup'
+        dest: '{{configs_dir}}{{ al_directory }}{{ al_hostname }}_{{ DTG }}.backup'
