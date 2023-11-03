@@ -16,7 +16,7 @@
 
     - name: Create Directory {{al_directory}}/
       file:
-       path: '{{configs_dir}}{{al_directory}}/{{DTG}}/'
+       path: '{{configs_dir}}{{al_directory}}/'
        state: directory        
 
     - name: Generate API Key      
@@ -48,4 +48,4 @@
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
-        dest: '{{configs_dir}}{{al_directory}}/{{hostname}}.xml'
+        dest: '{{configs_dir}}{{al_directory}}/{{hostname}}_{{DTG}}.xml'
