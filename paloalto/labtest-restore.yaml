@@ -24,7 +24,3 @@
         password: "{{ ansible_password }}"
         file: '{{ al_backup_name }}'
         commit: 'true'
-
-#    - name: Commit 
-#      panos_commit_firewall:
-#        provider: '{{ palo_provider }}'
