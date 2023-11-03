@@ -5,8 +5,16 @@
   vars:
     configs_dir: "/labbackup/"
   tasks:
-    - name: Generate API Key
-      
+    - name: Get ansible date/time facts
+      setup:
+        filter: "ansible_date_time"
+        gather_subset: "!all"
+
+    - name: Store DTG as fact
+      set_fact:
+        DTG: "{{ ansible_date_time.date }}"    
+
+    - name: Generate API Key      
       check_mode: no
       uri:
         validate_certs: no
