@@ -10,19 +10,18 @@
       password: "{{ ansible_password }}"
   collections:
     - paloaltonetworks.panos
-          
+
   tasks:
     - name: Push  configurations on each devices from the {{ configs_dir }} directory
       connection: local
       panos_import:
         provider: '{{ palo_provider }}'
-        validate_certs: no
-        file: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
+        filename: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
         category: "configuration"
     - name: Load configurations on each devices
       panos_loadcfg:
         provider: '{{ palo_provider }}'
-        file: '{{ al_backup_name }}'  
+        filename: '{{ al_backup_name }}'  
 
 #    - name: Commit 
 #      panos_commit_firewall:
