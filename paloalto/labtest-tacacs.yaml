@@ -49,6 +49,12 @@
             </allow-list>
           </entry>
 
+    - name: Configure Authentication Profile TACACS to be used on the Device
+      paloaltonetworks.panos.panos_config_element:
+        provider: '{{ palo_provider }}'
+        xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system"
+        element: |
+          <authentication-profile>AP-ALNET-TACACs</authentication-profile>
 #    - name: Commit 
 #      panos_commit_firewall:
 #        provider: '{{ palo_provider }}'        
