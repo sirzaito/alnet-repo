@@ -22,7 +22,8 @@
       paloaltonetworks.panos.panos_loadcfg:
         ip_address: "{{ ansible_host }}"
         password: "{{ ansible_password }}"
-        file: '{{ al_backup_name }}'  
+        file: '{{ al_backup_name }}'
+        commit: 'true'
 
 #    - name: Commit 
 #      panos_commit_firewall:
