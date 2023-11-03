@@ -1,0 +1,22 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+    configs_dir: "/labbackup/"
+  tasks:
+    - name: Push  configurations on each devices from the {{ configs_dir }} directory
+      connection: local
+      panos_import:
+        provider: '{{ palo_provider }}'
+        validate_certs: no
+        file: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
+        category: "configuration"
+    - name: Load configurations on each devices
+      panos_loadcfg:
+        provider: '{{ palo_provider }}'
+        file: '{{ al_backup_name }}'  
+
+#    - name: Commit 
+#      panos_commit_firewall:
+#        provider: '{{ palo_provider }}'
