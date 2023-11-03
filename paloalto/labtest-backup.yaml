@@ -14,9 +14,9 @@
       set_fact:
         DTG: "{{ ansible_date_time.date }}"
 
-    - name: Create Directory {{al_directory}}/
+    - name: Create Directory {{al_directory}}
       file:
-       path: '{{configs_dir}}{{al_directory}}/'
+       path: '{{configs_dir}}{{al_directory}}'
        state: directory        
 
     - name: Generate API Key      
@@ -48,4 +48,4 @@
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
-        dest: '{{configs_dir}}{{al_directory}}/{{hostname}}_{{DTG}}.xml'
+        dest: '{{configs_dir}}{{al_directory}}{{hostname}}_{{DTG}}.xml'
