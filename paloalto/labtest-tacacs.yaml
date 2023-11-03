@@ -18,12 +18,12 @@
           <tacplus>
             <entry name="SP-ALNET-TACACs">
               <server>
-                <entry name="Balin">
+                <entry name="{{ al_tacacs_srv_name }}">
                   <secret>
-                    -AQ==+sQEuEum5L7QmagjJNYOSCk7c4U=OySxkiL6gZ7X7tTnpok/MQ==
+                    {{ al_tacacs_key }}
                   </secret>
                   <port>49</port>
-                  <address>10.100.140.34</address>
+                  <address>{{ al_tacacs_srv }}</address>
                 </entry>
               </server>
               <protocol>CHAP</protocol>
