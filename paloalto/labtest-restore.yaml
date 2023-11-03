@@ -18,7 +18,7 @@
         provider: '{{ palo_provider }}'
         filename: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
         category: "configuration"
-    - name: Load configurations on each devices
+    - name: Load configurations on each devices and Commit, please be patience this will take a while.
       paloaltonetworks.panos.panos_loadcfg:
         ip_address: "{{ ansible_host }}"
         password: "{{ ansible_password }}"
