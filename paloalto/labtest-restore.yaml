@@ -14,12 +14,12 @@
   tasks:
     - name: Push  configurations on each devices from the {{ configs_dir }} directory
       connection: local
-      panos_import:
+      paloaltonetworks.panos.panos_import:
         provider: '{{ palo_provider }}'
         filename: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
         category: "configuration"
     - name: Load configurations on each devices
-      panos_loadcfg:
+      paloaltonetworks.panos.panos_loadcfg:
         file: '{{ al_backup_name }}'  
 
 #    - name: Commit 
