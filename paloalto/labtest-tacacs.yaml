@@ -1,0 +1,35 @@
+- name: Palo Alto Playbook
+  hosts: all
+  connection: local
+  vars:
+    palo_provider:
+      ip_address: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_password }}"
+  collections:
+    - paloaltonetworks.panos
+
+  tasks: 
+    - name: Set Server Profile TACACS
+      paloaltonetworks.panos.panos_config_element:
+        provider: '{{ palo_provider }}'
+        xpath: "/config/shared/server-profile"
+        element: |
+          <tacplus>
+            <entry name="SP-ALNET-TACACs">
+              <server>
+                <entry name="Balin">
+                  <secret>
+                    -AQ==+sQEuEum5L7QmagjJNYOSCk7c4U=OySxkiL6gZ7X7tTnpok/MQ==
+                  </secret>
+                  <port>49</port>
+                  <address>10.100.140.34</address>
+                </entry>
+              </server>
+              <protocol>CHAP</protocol>
+            </entry>
+          </tacplus>
+
+#    - name: Commit 
+#      panos_commit_firewall:
+#        provider: '{{ palo_provider }}'        
