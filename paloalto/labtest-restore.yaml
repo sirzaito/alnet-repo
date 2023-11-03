@@ -15,13 +15,14 @@
     - name: Push  configurations on each devices from the {{ configs_dir }} directory
       connection: local
       panos_import:
+        validate_certs: no
         provider: '{{ palo_provider }}'
         filename: '{{ configs_dir }}{{al_directory}}{{ al_backup_name }}'
         category: "configuration"
     - name: Load configurations on each devices
       panos_loadcfg:
         provider: '{{ palo_provider }}'
-        filename: '{{ al_backup_name }}'  
+        file: '{{ al_backup_name }}'  
 
 #    - name: Commit 
 #      panos_commit_firewall:
