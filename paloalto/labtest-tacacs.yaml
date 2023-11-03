@@ -55,6 +55,6 @@
         xpath: "/config/devices/entry[@name='localhost.localdomain']/deviceconfig/system"
         element: |
           <authentication-profile>AP-ALNET-TACACs</authentication-profile>
-#    - name: Commit 
-#      panos_commit_firewall:
-#        provider: '{{ palo_provider }}'        
+    - name: FW Commit. Please be patience this may take a while.
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'        
