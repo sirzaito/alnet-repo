@@ -20,7 +20,8 @@
         category: "configuration"
     - name: Load configurations on each devices
       paloaltonetworks.panos.panos_loadcfg:
-        provider: '{{ palo_provider }}'
+        ip_address: "{{ ansible_host }}"
+        password: "{{ ansible_password }}"
         file: '{{ al_backup_name }}'  
 
 #    - name: Commit 
