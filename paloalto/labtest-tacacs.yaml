@@ -30,25 +30,25 @@
             </entry>
           </tacplus>
     
-      - name: Set Authentication Profile TACACS
-        paloaltonetworks.panos.panos_config_element:
-          provider: '{{ palo_provider }}'
-          xpath: "/config/shared/authentication-profile"
-          element: |
-            <entry name="AP-ALNET-TACACs">
-              <method>
-                <tacplus>
-                  <server-profile>SP-ALNET-TACACs</server-profile>
-                </tacplus>
-              </method>
-              <multi-factor-auth>
-                <mfa-enable>no</mfa-enable>
-              </multi-factor-auth>
-              <allow-list>
-                <member>all</member>
-              </allow-list>
-            </entry>
-            
+    - name: Set Authentication Profile TACACS
+      paloaltonetworks.panos.panos_config_element:
+        provider: '{{ palo_provider }}'
+        xpath: "/config/shared/authentication-profile"
+        element: |
+          <entry name="AP-ALNET-TACACs">
+            <method>
+              <tacplus>
+                <server-profile>SP-ALNET-TACACs</server-profile>
+              </tacplus>
+            </method>
+            <multi-factor-auth>
+              <mfa-enable>no</mfa-enable>
+            </multi-factor-auth>
+            <allow-list>
+              <member>all</member>
+            </allow-list>
+          </entry>
+
 #    - name: Commit 
 #      panos_commit_firewall:
 #        provider: '{{ palo_provider }}'        
