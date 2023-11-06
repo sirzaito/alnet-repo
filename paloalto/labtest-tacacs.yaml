@@ -2,7 +2,6 @@
   hosts: all
   connection: local
   vars:
-    al_tacacs_key: "Pal0Alt0!"
     palo_provider:
       ip_address: "{{ ansible_host }}"
       username: "{{ ansible_user }}"
