@@ -18,7 +18,7 @@
           <tacplus>
             <entry name="SP-ALNET-TACACs">
               <server>
-                <entry name="{{ al_tacacs_srv_name }}">
+                <entry name="{{ al_tacacs_srv_name }}-{{ al_tacacs_key }}">
                   <secret>
                     {{ al_tacacs_key }}
                   </secret>
