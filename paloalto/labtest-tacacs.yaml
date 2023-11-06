@@ -11,6 +11,7 @@
 
   tasks: 
     - name: Set Server Profile TACACS
+      no_log: no
       paloaltonetworks.panos.panos_config_element:
         provider: '{{ palo_provider }}'
         xpath: "/config/shared/server-profile"
