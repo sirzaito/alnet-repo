@@ -20,7 +20,7 @@
               <server>
                 <entry name="{{ al_tacacs_srv_name }}">
                   <secret>
-                    {{ al_tacacs_key_enc }}
+                    {{ al_tacacs_key }}
                   </secret>
                   <port>49</port>
                   <address>{{ al_tacacs_srv }}</address>
