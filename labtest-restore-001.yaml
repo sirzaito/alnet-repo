@@ -18,4 +18,4 @@
           scope: 'global'
           source: 'upload'
           vdom: 'root'
-          file_content: "{{ lookup( 'file', '/labbackup/{{ al_directory }}{{ al_hostname }}.backup') | string | b64encode }}"
+          file_content: "{{ lookup( 'file', '/labbackup/{{ al_directory }}{{ al_backup_name }}') | string | b64encode }}"
