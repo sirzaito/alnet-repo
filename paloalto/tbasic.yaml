@@ -20,6 +20,7 @@
       panos_mgtconfig: 
         provider: '{{ palo_provider }}'
         dns_server_primary: '{{ dns_primary_ip }}'
+        ntp_server_primary: '{{ ntp_primary_ip }}'
 #        dns_server_secondary: '{{ dns_secondary_ip }}'
 #        panorama_primary: '{{ panorama_primary_ip }}'
 #        panorama_secondary: '{{ panorama_secondary_ip }}'
