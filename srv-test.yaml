@@ -2,7 +2,6 @@
 - hosts: all
   become: true
   connection: local
-  gather_facts: false
   tasks:
     - name: "Update System"
       apt:
