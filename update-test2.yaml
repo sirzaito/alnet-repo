@@ -9,6 +9,15 @@
         state: present
         name: "rsyslog"
     
+    - name: "Download Filebeat"
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ ELK_VERSION }}-amd64.deb"
+        dest: "/tmp/filebeat-{{ ELK_VERSION }}-amd64.deb"
+    
+    - name: "Install Filebeat"
+      apt:
+        deb: "/tmp/filebeat-{{ ELK_VERSION }}-amd64.deb"
+    
     - name: "Append PROMPT_COMMAND Environment Variable"
       lineinfile:
         path: /etc/bash.bashrc
@@ -28,3 +37,9 @@
         create: yes
       notify:
         - restart rsyslog
+    
+    - name: "Configure Logrotate to rotate bash.log"
+      lineinfile:
+        path: /etc/logrotate.d/rsyslog
+        insertafter: "^\/var\/log\/messages"
+        line: /var/log/bash.log
