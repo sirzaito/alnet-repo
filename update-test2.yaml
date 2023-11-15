@@ -19,3 +19,4 @@
       lineinfile:
         path: /etc/bash.bashrc
         line: 'logoutput() { output=$(while read input; do echo "$input"; done < "${1:-/dev/stdin}"); echo -e "$output\n"; echo -e "$output" | head -c 10000 | base64 -w0 > /tmp/lastoutput.tmp; return $?; }'
+        
