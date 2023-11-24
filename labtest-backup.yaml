@@ -35,5 +35,5 @@
 
     - name: Save the backup information.
       copy:
-        content: '{{ backupinfo.raw }}'
+        content: '{{ backupinfo }}'
         dest: '{{configs_dir}}{{ al_directory }}{{ al_hostname }}_{{ DTG }}.backup'
