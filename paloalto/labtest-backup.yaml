@@ -48,4 +48,4 @@
       check_mode: no
       copy:
         content: "{{configuration_string['content']  | regex_replace('<response.*<result>') | regex_replace('</result></response>')}}"
-        dest: '{{configs_dir}}{{al_directory}}{{hostname}}_{{DTG}}.xml'
+        dest: '{{configs_dir}}{{al_directory}}{{al_hostname}}_{{DTG}}.xml'
