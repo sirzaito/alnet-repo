@@ -20,7 +20,7 @@
        backup: yes
        backup_options:
          #ansible_host = getting device IP, ansible_net_hostname = getting device hostname
-         filename: "{{al_hostname}}_{{ ansible_host }}.cfg"
+         filename: "{{ date.stdout }}_{{al_hostname}}_{{ ansible_host }}.cfg"
          dir_path: "/{{configs_dir}}{{al_directory}}{{al_hostname}}"
     - name: Tasks done
       debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}."
