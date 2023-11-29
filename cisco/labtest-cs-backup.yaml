@@ -5,7 +5,7 @@
   gather_facts: false
   vars:
     configs_dir: "/labbackup/"
-    ansible_ssh_common_args": "-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa"
+    ansible_ssh_common_args: "-o KexAlgorithms=+diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa"
   tasks:
     - name: Access ansible net hostname
       ios_facts:
