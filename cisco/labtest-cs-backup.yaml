@@ -3,9 +3,9 @@
   hosts: Cisco
   connection: network_cli
   gather_facts: false
-  host_key_checking: false
   vars:
     configs_dir: "/labbackup/"
+    host_key_checking: false
   tasks:
     - name: Access ansible net hostname
       ios_facts:
