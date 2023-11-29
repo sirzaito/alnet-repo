@@ -5,7 +5,6 @@
   gather_facts: false
   vars:
     configs_dir: "/labbackup/"
-    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: Access ansible net hostname
       ios_facts:
