@@ -21,6 +21,6 @@
        backup_options:
          #ansible_host = getting device IP, ansible_net_hostname = getting device hostname
          filename: "{{al_hostname}}_{{ ansible_host }}.cfg"
-         dir_path: /{{configs_dir}}{{al_directory}}{{ date.stdout }}_at_{{ time.stdout }}
+         dir_path: /{{configs_dir}}{{al_directory}}{{al_hostname}}{{ date.stdout }}_at_{{ time.stdout }}
     - name: Tasks done
       debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}."
