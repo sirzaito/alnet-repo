@@ -3,6 +3,7 @@
   hosts: Cisco
   connection: network_cli
   gather_facts: false
+  ignore_errors: yes
   vars:
     configs_dir: "/labbackup/"
     host_key_checking: false
