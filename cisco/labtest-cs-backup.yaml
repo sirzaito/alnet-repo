@@ -1,7 +1,7 @@
 ---
 - name: Backup Cisco Router or Switch
   hosts: Cisco
-  connection: paramiko
+  connection: network_cli
   gather_facts: false
   vars:
     configs_dir: "/labbackup/"
