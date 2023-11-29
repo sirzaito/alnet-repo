@@ -7,7 +7,6 @@
     configs_dir: "/labbackup/"
   tasks:
     - name: Ignore host key for {{ inventory_hostname }} on first run
-      when: has_entry_in_known_hosts_file.rc == 1
       set_fact:
         ansible_ssh_common_args: "-o StrictHostKeyChecking=no"    
     - name: Access ansible net hostname
