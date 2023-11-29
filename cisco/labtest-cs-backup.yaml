@@ -6,12 +6,10 @@
   vars:
     configs_dir: "/labbackup/"
   tasks:
-    - name: Accept EC2 SSH host keys
-      connection: local
-      become: false
-      shell: |
-        ssh-keygen -F {{ inventory_hostname }} ||
-          ssh-keyscan -H {{ inventory_hostname }} >> ~/.ssh/known_hosts
+    - name: Ignore host key for {{ inventory_hostname }} on first run
+      when: has_entry_in_known_hosts_file.rc == 1
+      set_fact:
+        ansible_ssh_common_args: "-o StrictHostKeyChecking=no"    
     - name: Access ansible net hostname
       ios_facts:
         gather_subset: all
