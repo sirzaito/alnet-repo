@@ -6,9 +6,6 @@
   vars:
     configs_dir: "/labbackup/"
   tasks:
-    - name: Ignore host key for {{ inventory_hostname }} on first run
-      set_fact:
-        ansible_ssh_common_args: "-o StrictHostKeyChecking=no"    
     - name: Access ansible net hostname
       ios_facts:
         gather_subset: all
