@@ -5,7 +5,6 @@
   gather_facts: false
   vars:
     configs_dir: "/labbackup/"
-    host_key_checking: false
   tasks:
     - name: Access ansible net hostname
       ios_facts:
