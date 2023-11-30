@@ -1,24 +1,21 @@
 ---
 - hosts: all
   gather_facts: no
-  vars:
-    al_network_snmp_source: "Vlan76"
-    al_network_snmp_contact: "Admin"
   tasks:
  
   - name: SET COMMUNITY STRING 
     ios_config:
       lines:
-        - snmp-server community al_network_ro RO
-  #- name: TRAP-SOURCE {{ al_network_snmp_source }}
+        - snmp-server community {{ al_snmp_community }} RO
+  #- name: TRAP-SOURCE {{ al_snmp_source }}
   #  ios_config:
   #    lines:
-  #       - snmp-server trap-source {{ al_network_snmp_source }}
+  #       - snmp-server trap-source {{ al_snmp_source }}
 
   - name: SET CONTACT INFO 
     ios_config:
       lines:
-        - snmp-server contact {{ al_network_snmp_contact }}
+        - snmp-server contact {{ al_snmp_contact }}
 
 
   #- name: SET SNMP SERVER ADDRESS to send Notificactions
