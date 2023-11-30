@@ -8,7 +8,7 @@
           - tacacs server {{ al_tacacs_profile }}
           - address ipv4 {{ al_tacacs_srv }}
           - key {{ al_tacacs_key }}
-          - aaa authentication login {{ al_tacacs_profile }} group tacacs+ local
+          - aaa authentication login {{ al_tacacs_profile }} local group tacacs+
           - line vty 0 4
           - login authentication {{ al_tacacs_profile }}
           #- aaa authentication enable default group TACACS-SERVER-GROUP enable
