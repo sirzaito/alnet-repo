@@ -13,13 +13,6 @@
     - name: Update facts
       ansible.builtin.setup:
         gather_subset: all
-      register: machine_facts
-    - name: Display facts
-      ansible.builtin.debug:
-        var: machine_facts.ansible_facts.ansible_all_ipv4_addresses 
-    - name: Print all available facts
-      ansible.builtin.debug:
-        var: ansible_facts
     - name: Get Date for folder creation
       set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
       tags: date_stamp
