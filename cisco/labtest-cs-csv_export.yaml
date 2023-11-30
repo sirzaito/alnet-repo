@@ -12,14 +12,11 @@
   tasks:
     - name: Update facts
       ansible.builtin.setup:
-        gather_subset: all_ipv4_addresses
+        gather_subset: all
       register: machine_facts
     - name: Display facts
       ansible.builtin.debug:
-        var: machine_facts.ansible_facts.ansible_all_ipv4_addresses
-    - debug: var=ansible_all_ipv4_addresses
-    - debug: var=ansible_default_ipv4.address
- 
+        var: machine_facts.ansible_facts.ansible_all_ipv4_addresses 
     - name: Print all available facts
       ansible.builtin.debug:
         var: ansible_facts
