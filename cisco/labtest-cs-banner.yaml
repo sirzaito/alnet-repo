@@ -7,7 +7,7 @@
   - name: CONFIGURE BANNER ON CISCO DEVICES
     ios_banner:
       banner: login
-      text: "{{ lookup('file', './vars/banner.cfg') }}"
+      text: "{{ lookup('file', './cisco/vars/banner.cfg') }}"
       state: present
 
   - name: SHOW RUN | BEG BANNER 
