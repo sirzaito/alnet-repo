@@ -17,9 +17,6 @@
 
 #This will extract vavlues from the ios_facts and conver into csv_data
     - name: Get the values
-      ios_facts:
-        gather_subset: all
-
       set_fact:
         csv_data: >
           {{ ansible_net_hostname }},{{ ansible_net_all_ipv4_addresses }},{{ ansible_net_all_ipv6_addresses }},
