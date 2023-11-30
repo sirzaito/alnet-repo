@@ -21,7 +21,7 @@
 
     - name: Configure TACACS+ servers (conditional)
       ios_config:
-        lines: "tacacs-server {{ item }}"
+        lines: "tacacs server {{ item }}"
       with_items: "{{ tacacs_servers }}"
       when: tacacs_servers is defined
 
