@@ -6,14 +6,18 @@
 
   - name: CONFIGURE BANNER ON CISCO DEVICES
     ios_banner:
-      banner: incoming
+      banner: exec
       text: "{{ lookup('file', './vars/banner.cfg') }}"
       state: present
 
-  - name: SHOW RUN | BEG BANNER 
-    ios_command:
-      commands:
-        - show run | beg banner
-    register: banner
+  - name: DELETE INCOMING BANNER ON CISCO DEVICES
+    ios_banner:
+      banner: incoming
+      text: ""
+      state: present
 
-  - debug: var=banner.stdout_lines
+  - name: DELETE LOGIN BANNER ON CISCO DEVICES
+    ios_banner:
+      banner: login
+      text: ""
+      state: present
