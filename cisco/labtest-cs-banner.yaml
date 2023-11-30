@@ -6,18 +6,16 @@
 
   - name: CONFIGURE BANNER ON CISCO DEVICES
     ios_banner:
-      banner: exec
+      banner: login
       text: "{{ lookup('file', './vars/banner.cfg') }}"
       state: present
 
   - name: DELETE INCOMING BANNER ON CISCO DEVICES
     ios_banner:
       banner: incoming
-      text: ""
-      state: present
+      state: absent
 
-  - name: DELETE LOGIN BANNER ON CISCO DEVICES
+  - name: DELETE EXEC BANNER ON CISCO DEVICES
     ios_banner:
-      banner: login
-      text: ""
-      state: present
+      banner: exec
+      state: absent
