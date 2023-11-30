@@ -5,10 +5,7 @@
    gather_facts: yes    # Gather Facts Enabled
 
    tasks:
-
-    - name: VIEW ALL ANSIBLE FACT KEYS
-      debug:
-        var: ansible_facts.keys()
+    
     - name: Get Date for folder creation
       set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
       tags: date_stamp
