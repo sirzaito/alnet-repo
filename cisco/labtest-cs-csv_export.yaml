@@ -2,7 +2,7 @@
 - name: GATHER FACTS FOR IOS
   hosts: all
   connection: network_cli
-  gather_facts: True    # Gather Facts Enabled
+  gather_facts: yes    # Gather Facts Enabled
 
   vars:
     output_path: "./csv/"
