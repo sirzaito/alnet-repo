@@ -24,8 +24,7 @@
         csv_data: >
           {{ ansible_net_hostname }},{{ ansible_net_all_ipv4_addresses }},{{ ansible_net_all_ipv6_addresses }},
           {{ ansible_net_model }},{{ ansible_net_serialnum }},{{ ansible_net_version }},
-          {{ ansible_net_image }},{{ ansible_net_iostype }},{{ ansible_net_filesystems }},
-          
+          {{ ansible_net_image }},{{ ansible_net_iostype }},{{ ansible_net_filesystems }},          
           {{ ansible_net_memtotal_mb }},{{ ansible_net_memfree_mb }},{{ ansible_net_neighbors }},
           {{ ansible_net_system }},{{ ansible_net_api }},{{ ansible_net_python_version }}
 
@@ -37,7 +36,6 @@
           hostname,all_ipv4_addresses,all_ipv6_addresses,
           model,serialnum,version,
           image,iostype,filesystems,
-          filesystems_info_spacetotal_kb,filesystems_info_spacefree_kb,
           memtotal_mb,memfree_mb,neighbors,
           system,api,python_version
         create: yes
