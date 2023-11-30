@@ -19,7 +19,7 @@
     - name: Get the values
       set_fact:
         csv_data: >
-          {{ ansible_net_hostname }},{{ ansible_net_all_ipv4_addresses }},{{ ansible_net_all_ipv6_addresses }},
+          {{ ansible_net_hostname }},
           {{ ansible_net_model }},{{ ansible_net_serialnum }},{{ ansible_net_version }},
           {{ ansible_net_image }},{{ ansible_net_iostype }},{{ ansible_net_filesystems }},
           {{ ansible_net_filesystems_info['bootflash:']['spacetotal_kb'] }},{{ ansible_net_filesystems_info['bootflash:']['spacefree_kb'] }},
