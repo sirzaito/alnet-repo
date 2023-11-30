@@ -12,7 +12,6 @@
     - name: VIEW ALL ANSIBLE FACT KEYS
       debug:
        var: ansible_facts.keys()
-       var: net_gather_subset
 
     - name: VIEW HOSTNAME
       debug:
