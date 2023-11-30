@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: no
   vars:
-    tacacs_servers: [10.100.140.34]
+    tacacs_servers: ['10.100.140.34']
     tacacs_server_key: "Pal0Alt0!"
     tacacs_server_timeout: 5
     #tacacs_source_interface:
