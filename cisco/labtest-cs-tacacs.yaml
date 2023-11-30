@@ -7,8 +7,8 @@
         lines: "{{ item }}"
       with_items:
         - aaa authentication login default local group tacacs+
-        #- aaa authentication enable default group tacacs+ enable
-        #- aaa authorization commands 15 default group tacacs+ local
+        #- aaa authentication enable default group tacacs+ enable # Not needed so far, don't use enable password
+        - aaa authorization commands 15 default local group tacacs+
         #- aaa accounting exec default stop-only group tacacs+
         #- aaa accounting commands 15 default stop-only group tacacs+
         #- aaa accounting network default stop-only group tacacs+
@@ -21,10 +21,10 @@
 
     - name: Configure TACACS+ timeout
       ios_config:
-        lines: "tacacs-server timeout {{tacacs_server_timeout}}"
-      when: al_tacacs_srv is defined and tacacs_server_timeout is defined
+        lines: "tacacs-server timeout {{al_server_timeout}}"
+      when: al_tacacs_srv is defined and al_server_timeout is defined
 
     - name: Configure TACACS+ source interface
       ios_config:
-        lines: "ip tacacs source-interface {{tacacs_source_interface}}"
-      when: al_tacacs_srv is defined and tacacs_source_interface is defined
+        lines: "ip tacacs source-interface {{al_source_interface}}"
+      when: al_tacacs_srv is defined and al_source_interface is defined
