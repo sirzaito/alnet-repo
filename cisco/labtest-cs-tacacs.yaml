@@ -13,7 +13,7 @@
           - tacacs server ALNET01
           - address ipv4 10.100.140.34
           - key {{ tacacs_server_key }}
-          - aaa authentication login ALNET01 group tacacs+ local  
+          - aaa authentication login ALNET01 group tacacs+ local
           - line vty 0 15
           - login authentication ALNET01
           #- aaa authentication enable default group TACACS-SERVER-GROUP enable
