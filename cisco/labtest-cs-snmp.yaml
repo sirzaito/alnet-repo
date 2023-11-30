@@ -9,8 +9,8 @@
   - name: SET COMMUNITY STRING 
     ios_config:
       lines:
-        - snmp-server community al_network_ro RO 99
-
+        - snmp-server community al_network_ro RO
+        - snmp-server host 10.100.140.32 version 2c al_network_ro
   #- name: TRAP-SOURCE {{ al_network_snmp_source }}
   #  ios_config:
   #    lines:
