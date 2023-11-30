@@ -1,21 +1,16 @@
 ---
 - hosts: all
   gather_facts: no
-  vars:
-    tacacs_servers: 10.100.140.34
-    tacacs_server_key: "Pal0Alt0!"
-    tacacs_server_timeout: 5
-    #tacacs_source_interface:
   tasks:
     - name: Configure TACACS+
       ios_config:
         lines:
-          - tacacs server ALNET01
-          - address ipv4 10.100.140.34
-          - key {{ tacacs_server_key }}
-          - aaa authentication login ALNET01 group tacacs+ local
-          - line vty 0 15
-          - login authentication ALNET01
+          - tacacs server {{ al_tacacs_profile }}
+          - address ipv4 {{ al_tacacs_srv }}
+          - key {{ al_tacacs_key }}
+          - aaa authentication login {{ al_tacacs_profile }} group tacacs+ local
+          - line vty 0 4
+          - login authentication {{ al_tacacs_profile }}
           #- aaa authentication enable default group TACACS-SERVER-GROUP enable
           #- aaa authorization exec default group TACACS-SERVER-GROUP local
           #- aaa accounting exec default start-stop group TACACS-SERVER-GROUP
