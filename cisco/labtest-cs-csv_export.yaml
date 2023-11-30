@@ -10,9 +10,9 @@
     ansible_network_os: ios
 
   tasks:
-    - name: Display IP address
+    - name: Display all interfaces name
       debug:
-        var: ansible_default_ipv4.address    
+        var: ansible_facts.interfaces
     - name: Update facts
       ansible.builtin.setup:
         gather_subset: all
