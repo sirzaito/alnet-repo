@@ -13,8 +13,11 @@
       debug:
        var: ansible_facts.keys()
        var: net_gather_subset
-       var: network_resources
        var: net_gather_network_resources
+
+    - name: VIEW HOSTNAME
+      debug:
+        var: network_resources
 
     - name: VIEW HOSTNAME
       debug:
