@@ -22,7 +22,7 @@
     - name: Get the values
       set_fact:
         csv_data: >
-          {{ ansible_net_hostname }};{{ ansible_net_all_ipv4_addresses }};{{ ansible_net_l3_interfaces }};
+          {{ ansible_net_hostname }};{{ ansible_net_all_ipv4_addresses }};{{ ansible_net_interfaces }};
           {{ ansible_net_model }};{{ ansible_net_serialnum }};{{ ansible_net_version }};
           {{ ansible_net_image }};{{ ansible_net_iostype }};{{ ansible_net_filesystems }};          
           {{ ansible_net_memtotal_mb }};{{ ansible_net_memfree_mb }};{{ ansible_net_neighbors }};
@@ -33,7 +33,7 @@
       lineinfile:
         dest: "{{ output_path }}{{ filename }}"
         line: >
-          hostname;all_ipv4_addresses;l3_interfaces;
+          hostname;all_ipv4_addresses;ansible_net_interfaces;
           model;serialnum;version;
           image;iostype;filesystems;
           memtotal_mb;memfree_mb;neighbors;
