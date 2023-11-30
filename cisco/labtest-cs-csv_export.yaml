@@ -1,12 +1,59 @@
 ---
-- hosts: all
-  gather_facts: no
+ - name: GATHER FACTS FOR IOS
+   hosts: all
+   connection: network_cli
+   gather_facts: yes    # Gather Facts Enabled
 
-  tasks:
-
-  - name: GATHER FACTS
-    ios_facts:
+   tasks:
     
-    register: facts
+    - name: Get Date for folder creation
+      set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
+      tags: date_stamp
+      run_once: true
 
-  - debug: var=facts.stdout_lines
+#This will extract vavlues from the ios_facts and conver into csv_data
+    - name: Get the values
+      set_fact:
+        csv_data: >
+          {{ ansible_net_hostname }},{{ ansible_net_all_ipv4_addresses }},{{ ansible_net_all_ipv6_addresses }},
+          {{ ansible_net_model }},{{ ansible_net_serialnum }},{{ ansible_net_version }},
+          {{ ansible_net_image }},{{ ansible_net_iostype }},{{ ansible_net_filesystems }},
+          {{ ansible_net_filesystems_info['bootflash:']['spacetotal_kb'] }},{{ ansible_net_filesystems_info['bootflash:']['spacefree_kb'] }},
+          {{ ansible_net_memtotal_mb }},{{ ansible_net_memfree_mb }},{{ ansible_net_neighbors }},
+          {{ ansible_net_system }},{{ ansible_net_api }},{{ ansible_net_python_version }}
+
+#Create a csv file and add the header, only runs once on the first node
+    - name: Create a csv file and put headers
+      lineinfile:
+        dest: "{{ output_path }}/{{ filename }}"
+        line: >
+          hostname,all_ipv4_addresses,all_ipv6_addresses,
+          model,serialnum,version,
+          image,iostype,filesystems,
+          filesystems_info_spacetotal_kb,filesystems_info_spacefree_kb,
+          memtotal_mb,memfree_mb,neighbors,
+          system,api,python_version
+        create: yes
+        state: present
+      when: inventory_hostname == groups.all[0]
+
+#Write the device facts to CSV file
+    - name: Output Information to CSV file
+      lineinfile:
+        dest: "{{ output_path }}/{{ filename }}"
+        line: "{{ csv_data }}"
+      when: ansible_net_iostype == 'IOS-XE'
+
+    - name: Output Information to CSV file
+      lineinfile:
+        dest: "{{ output_path }}/{{ filename }}"
+        line: "{{ csv_data }}"
+      when: ansible_net_iostype == 'IOS'
+
+#Remove any blank newlines from the file, only runs once on the first node
+    - name: Remove blank lines from csv file
+      lineinfile:
+        path: "./{{ output_path }}/{{ filename }}"
+        state: absent
+        regex: '^\s*$'
+      when: inventory_hostname == groups.all[0]         
