@@ -14,15 +14,9 @@
         #- aaa accounting network default stop-only group tacacs+
       when: al_tacacs_srv is defined
 
-    - name: Configure TACACS+ servers (conditional)
+    - name: Configure TACACS+ Server & Key
       ios_config:
-        lines: "tacacs-server {{ item }}"
-      with_items: "{{ al_tacacs_srv }}"
-      when: al_tacacs_srv is defined
-
-    - name: Configure TACACS+ key
-      ios_config:
-        lines: "tacacs-server key {{al_tacacs_key}}"
+        lines: "tacacs-server host {{ al_tacacs_srv }} key {{al_tacacs_key}}"
       when: al_tacacs_srv is defined and al_tacacs_key is defined
 
     - name: Configure TACACS+ timeout
