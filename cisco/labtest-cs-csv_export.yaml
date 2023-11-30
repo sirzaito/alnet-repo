@@ -1,69 +1,96 @@
 ---
-- name: GATHER FACTS FOR IOS
-  hosts: all
-  connection: network_cli
-  gather_facts: yes    # Gather Facts Enabled
+ - name: GATHER FACTS FOR IOS
+   hosts: all
+   connection: network_cli
+   gather_facts: yes    # Gather Facts Enabled
 
-  vars:
-    output_path: "./csv/"
-    filename: "network_device_info_{{ date }}.csv"
-    ansible_network_os: ios
+   tasks:
 
-  tasks:
-    - name: Display all interfaces name
-      debug:
-        var: ansible_facts.interfaces
-    - name: Update facts
-      ansible.builtin.setup:
-        gather_subset: all
-    - name: Get Date for folder creation
-      set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
-      tags: date_stamp
-      run_once: true
+     - name: VIEW ALL ANSIBLE FACT KEYS
+       debug:
+         var: ansible_facts.keys()
 
-#This will extract vavlues from the ios_facts and conver into csv_data
-    - name: Get the values
-      set_fact:
-        csv_data: >
-          {{ ansible_net_hostname }},{{ ansible_net_all_ipv4_addresses }},{{ ansible_net_all_ipv6_addresses }},
-          {{ ansible_net_model }},{{ ansible_net_serialnum }},{{ ansible_net_version }},
-          {{ ansible_net_image }},{{ ansible_net_iostype }},{{ ansible_net_filesystems }},
-          {{ ansible_net_filesystems_info['bootflash:']['spacetotal_kb'] }},{{ ansible_net_filesystems_info['bootflash:']['spacefree_kb'] }},
-          {{ ansible_net_memtotal_mb }},{{ ansible_net_memfree_mb }},{{ ansible_net_neighbors }},
-          {{ ansible_net_system }},{{ ansible_net_api }},{{ ansible_net_python_version }}
 
-#Create a csv file and add the header, only runs once on the first node
-    - name: Create a csv file and put headers
-      lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
-        line: >
-          hostname,all_ipv4_addresses,all_ipv6_addresses,
-          model,serialnum,version,
-          image,iostype,filesystems,
-          filesystems_info_spacetotal_kb,filesystems_info_spacefree_kb,
-          memtotal_mb,memfree_mb,neighbors,
-          system,api,python_version
-        create: yes
-        state: present
-      when: inventory_hostname == groups.all[0]
+     - name: VIEW HOSTNAME
+       debug:
+         var: ansible_net_hostname
 
-#Write the device facts to CSV file
-    - name: Output Information to CSV file
-      lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
-        line: "{{ csv_data }}"
-      when: ansible_net_iostype == 'IOS-XE'
+     - name: VIEW OS VERSION
+       debug:
+         var: ansible_net_version
 
-    - name: Output Information to CSV file
-      lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
-        line: "{{ csv_data }}"
-      when: ansible_net_iostype == 'IOS'
+     - name: VIEW MODEL
+       debug:
+         var: ansible_net_model
 
-#Remove any blank newlines from the file, only runs once on the first node
-    - name: Remove blank lines from csv file
-      lineinfile:
-        path: "./{{ output_path }}/{{ filename }}"
-        state: absent
-        regex: '^\s*$'
-      when: inventory_hostname == groups.all[0]
+     - name: VIEW RESOURCES
+       debug:
+         var: ansible_network_resources
+
+     - name: VIEW NETWORK RESOURCES
+       debug:
+         var: ansible_net_gather_network_resources
+
+     - name: VIEW SUBSETS
+       debug:
+         var: ansible_net_gather_subset
+
+     - name: VIEW FILESYSTEMS
+       debug:
+         var: ansible_net_filesystems
+
+     - name: VIEW FILESYSTEM INFOMATION
+       debug:
+         var: ansible_net_filesystems_info
+
+     - name: VIEW MEMORY TOTAL IN MB
+       debug:
+         var: ansible_net_memtotal_mb
+
+     - name: VIEW MEMORY FREE IN MB
+       debug:
+         var: ansible_net_memfree_mb
+
+     - name: VIEW IP ADDRESS (IPv4)
+       debug:
+         var: ansible_net_all_ipv4_addresses
+
+     - name: VIEW IP ADDRESS (IPv6)
+       debug:
+         var: ansible_net_all_ipv6_addresses
+
+     - name: VIEW Neighbor
+       debug:
+         var: ansible_net_neighbors
+
+     - name: VIEW interfaces
+       debug:
+         var: ansible_net_interfaces
+
+     - name: VIEW SYSTEM
+       debug:
+         var: ansible_net_system
+
+     - name: VIEW IMAGE
+       debug:
+         var: ansible_net_image
+
+     - name: VIEW API
+       debug:
+         var: ansible_net_api
+
+     - name: VIEW PYTHON VERSION
+       debug:
+         var: ansible_net_python_version
+
+     - name: VIEW IOS TYPE
+       debug:
+         var: ansible_net_iostype
+
+     - name: VIEW SERIAL NUMBER
+       debug:
+         var: ansible_net_serialnum
+
+     - name: VIEW CONFIGURATION
+       debug:
+         var: ansible_net_config
