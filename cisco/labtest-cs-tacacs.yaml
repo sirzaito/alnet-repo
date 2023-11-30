@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: no
   vars:
-    tacacs_servers: "10.100.140.34"
+    tacacs_servers: [10.100.140.34]
     tacacs_server_key: "Pal0Alt0!"
     tacacs_server_timeout: 5
     #tacacs_source_interface:
@@ -21,11 +21,8 @@
 
     - name: Configure TACACS+ servers (conditional)
       ios_config:
-        lines: "{{ item }}"
-      with_items: 
-        - tacacs server default
-          - address ipv4 {{ tacacs_servers }}
-          - key {{ tacacs_server_key }}
+        lines: "tacacs-server {{ item }}"
+      with_items: "{{ tacacs_servers }}"
       when: tacacs_servers is defined
 
     - name: Configure TACACS+ key
