@@ -8,10 +8,9 @@
     output_path: "/labbackup/"
     filename: "network_device_info_{{ date }}.csv"
    tasks:
-    - name: Gather legacy and resource facts
+    - name: Gather legacy and resource facts # Must, using legacy!!
       cisco.ios.ios_facts:
         gather_subset: all
-        #gather_network_resources: all
 
     - name: Get Date for folder creation
       set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
