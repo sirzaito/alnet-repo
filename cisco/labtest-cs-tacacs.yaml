@@ -24,8 +24,8 @@
         lines: "{{ item }}"
       with_items: 
         - tacacs server default
-        - address ipv4 {{ tacacs_servers }}
-        - key {{ tacacs_server_key }}
+          - address ipv4 {{ tacacs_servers }}
+          - key {{ tacacs_server_key }}
       when: tacacs_servers is defined
 
     - name: Configure TACACS+ key
