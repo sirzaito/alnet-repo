@@ -2,14 +2,35 @@
 - hosts: all
   gather_facts: no
   tasks:
-    - name: Configure TACACS+
+    - name: Configure TACACS+ AAA (conditional)
       ios_config:
-        lines:
-          - tacacs-server host {{ al_tacacs_srv }} key {{ al_tacacs_key }}
-          - aaa authentication login {{ al_tacacs_profile }} local group tacacs+
-          - line vty 0 4
-          - login authentication {{ al_tacacs_profile }}
-          #- aaa authentication enable default group TACACS-SERVER-GROUP enable
-          #- aaa authorization exec default group TACACS-SERVER-GROUP local
-          #- aaa accounting exec default start-stop group TACACS-SERVER-GROUP
-          #- aaa accounting commands 15 default start-stop group TACACS-SERVER-GROUP
+        lines: "{{ item }}"
+      with_items:
+        - aaa authentication login default local group tacacs+
+        - aaa authentication enable default group tacacs+ enable
+        - aaa authorization commands 15 default group tacacs+ local
+        - aaa accounting exec default stop-only group tacacs+
+        - aaa accounting commands 15 default stop-only group tacacs+
+        - aaa accounting network default stop-only group tacacs+
+      when: al_tacacs_srv is defined
+
+    - name: Configure TACACS+ servers (conditional)
+      ios_config:
+        lines: "tacacs-server {{ item }}"
+      with_items: "{{ al_tacacs_srv }}"
+      when: al_tacacs_srv is defined
+
+    - name: Configure TACACS+ key
+      ios_config:
+        lines: "tacacs-server key {{al_tacacs_key}}"
+      when: al_tacacs_srv is defined and al_tacacs_key is defined
+
+    - name: Configure TACACS+ timeout
+      ios_config:
+        lines: "tacacs-server timeout {{tacacs_server_timeout}}"
+      when: al_tacacs_srv is defined and tacacs_server_timeout is defined
+
+    - name: Configure TACACS+ source interface
+      ios_config:
+        lines: "ip tacacs source-interface {{tacacs_source_interface}}"
+      when: al_tacacs_srv is defined and tacacs_source_interface is defined
