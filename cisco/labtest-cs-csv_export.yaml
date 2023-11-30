@@ -5,7 +5,11 @@
    gather_facts: yes    # Gather Facts Enabled
 
    tasks:
-    
+    - name: Gather legacy and resource facts
+      cisco.ios.ios_facts:
+        gather_subset: all
+        gather_network_resources: all
+
     - name: Get Date for folder creation
       set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
       tags: date_stamp
