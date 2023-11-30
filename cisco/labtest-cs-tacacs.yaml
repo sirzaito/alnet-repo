@@ -7,35 +7,17 @@
     tacacs_server_timeout: 5
     #tacacs_source_interface:
   tasks:
-    - name: Configure TACACS+ AAA (conditional)
+    - name: Configure TACACS+
       ios_config:
-        lines: "{{ item }}"
-      with_items:
-        - aaa authentication login default group tacacs+ local-case
-        - aaa authentication enable default group tacacs+ enable
-        - aaa authorization commands 15 default group tacacs+ local
-        - aaa accounting exec default stop-only group tacacs+
-        - aaa accounting commands 15 default stop-only group tacacs+
-        - aaa accounting network default stop-only group tacacs+
-      when: tacacs_servers is defined
-
-    - name: Configure TACACS+ servers (conditional)
-      ios_config:
-        lines: "tacacs-server {{ item }}"
-      with_items: "{{ tacacs_servers }}"
-      when: tacacs_servers is defined
-
-    - name: Configure TACACS+ key
-      ios_config:
-        lines: "tacacs-server key {{tacacs_server_key}}"
-      when: tacacs_servers is defined and tacacs_server_key is defined
-
-    - name: Configure TACACS+ timeout
-      ios_config:
-        lines: "tacacs-server timeout {{tacacs_server_timeout}}"
-      when: tacacs_servers is defined and tacacs_server_timeout is defined
-
-    - name: Configure TACACS+ source interface
-      ios_config:
-        lines: "ip tacacs source-interface {{tacacs_source_interface}}"
-      when: tacacs_servers is defined and tacacs_source_interface is defined
+        lines:
+          - tacacs server ALNET-T01
+          - address ipv4 10.100.140.32
+          - key Pal0Alt0!
+          - aaa group server tacacs+ TACACS-SERVER-GROUP
+          - server name ALNET-T01
+          - ip tacacs source-interface GigabitEthernet0/7.76
+          - aaa authentication login default group TACACS-SERVER-GROUP local  
+          - aaa authentication enable default group TACACS-SERVER-GROUP enable
+          - aaa authorization exec default group TACACS-SERVER-GROUP local
+          - aaa accounting exec default start-stop group TACACS-SERVER-GROUP
+          - aaa accounting commands 15 default start-stop group TACACS-SERVER-GROUP
