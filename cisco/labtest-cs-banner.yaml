@@ -13,7 +13,7 @@
   - name: SHOW RUN | BEG BANNER 
     ios_command:
       commands:
-        - show run | beg #########
+        - show run | beg banner
     register: banner
 
   - debug: var=banner.stdout_lines
