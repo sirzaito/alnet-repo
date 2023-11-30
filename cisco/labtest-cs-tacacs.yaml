@@ -1,0 +1,46 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+    tacacs_servers: [10.100.140.34]
+    tacacs_server_key: "Pal0Alt0!"
+    tacacs_server_timeout: 5
+    #tacacs_source_interface:
+  tasks:
+    - name: Configure TACACS+ AAA (conditional)
+      ios_config:
+        provider: "{{ provider }}"
+        lines: "{{ item }}"
+      with_items:
+        - aaa authentication login default group tacacs+ local-case
+        - aaa authentication enable default group tacacs+ enable
+        - aaa authorization commands 15 default group tacacs+ local
+        - aaa accounting exec default stop-only group tacacs+
+        - aaa accounting commands 15 default stop-only group tacacs+
+        - aaa accounting network default stop-only group tacacs+
+      when: tacacs_servers is defined
+
+    - name: Configure TACACS+ servers (conditional)
+      ios_config:
+        provider: "{{ provider }}"
+        lines: "tacacs-server {{ item }}"
+      with_items: "{{ tacacs_servers }}"
+      when: tacacs_servers is defined
+
+    - name: Configure TACACS+ key
+      ios_config:
+        provider: "{{ provider }}"
+        lines: "tacacs-server key {{tacacs_server_key}}"
+      when: tacacs_servers is defined and tacacs_server_key is defined
+
+    - name: Configure TACACS+ timeout
+      ios_config:
+        provider: "{{ provider }}"
+        lines: "tacacs-server timeout {{tacacs_server_timeout}}"
+      when: tacacs_servers is defined and tacacs_server_timeout is defined
+
+    - name: Configure TACACS+ source interface
+      ios_config:
+        provider: "{{ provider }}"
+        lines: "ip tacacs source-interface {{tacacs_source_interface}}"
+      when: tacacs_servers is defined and tacacs_source_interface is defined
