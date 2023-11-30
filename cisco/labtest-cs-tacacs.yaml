@@ -25,7 +25,7 @@
       with_items: 
         - tacacs server default
         - address ipv4 {{ tacacs_servers }}
-        - key {{ tacacs server 10.100.140.34 }}
+        - key {{ tacacs_server_key }}
       when: tacacs_servers is defined
 
     - name: Configure TACACS+ key
