@@ -15,7 +15,6 @@
           - key 0 Pal0Alt0!
           - aaa group server tacacs+ TACACS-SERVER-GROUP
           - server name ALNET-T01
-          - server 10.100.140.32
           - ip tacacs source-interface GigabitEthernet0/7.76
           - aaa authentication login default group tacacs+ local  
           #- aaa authentication enable default group TACACS-SERVER-GROUP enable
