@@ -6,14 +6,14 @@
 
   - name: CONFIGURE BANNER ON CISCO DEVICES
     ios_banner:
-      banner: login
+      banner: incoming
       text: "{{ lookup('file', './vars/banner.cfg') }}"
       state: present
 
   - name: SHOW RUN | BEG BANNER 
     ios_command:
       commands:
-        - show run | beg HODL
+        - show run | beg #########
     register: banner
 
   - debug: var=banner.stdout_lines
