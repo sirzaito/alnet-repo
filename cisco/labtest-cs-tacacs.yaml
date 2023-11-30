@@ -15,7 +15,7 @@
           - key {{ tacacs_server_key }}
           - aaa authentication login ALNET01 group tacacs+ local  
           - line vty 0 15
-          - login authentication ALNET01 local
+          - login authentication ALNET01
           #- aaa authentication enable default group TACACS-SERVER-GROUP enable
           #- aaa authorization exec default group TACACS-SERVER-GROUP local
           #- aaa accounting exec default start-stop group TACACS-SERVER-GROUP
