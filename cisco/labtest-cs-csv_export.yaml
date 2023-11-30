@@ -10,6 +10,9 @@
     ansible_network_os: ios
 
   tasks:
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
     - name: Get Date for folder creation
       set_fact: date="{{lookup('pipe','date +%Y%m%d')}}"
       tags: date_stamp
