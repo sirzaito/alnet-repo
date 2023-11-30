@@ -7,8 +7,8 @@
         lines: "{{ item }}"
       with_items:
         - aaa authentication login default local group tacacs+
-        - aaa authentication enable default group tacacs+ enable
-        - aaa authorization commands 15 default group tacacs+ local
+        #- aaa authentication enable default group tacacs+ enable
+        #- aaa authorization commands 15 default group tacacs+ local
         #- aaa accounting exec default stop-only group tacacs+
         #- aaa accounting commands 15 default stop-only group tacacs+
         #- aaa accounting network default stop-only group tacacs+
