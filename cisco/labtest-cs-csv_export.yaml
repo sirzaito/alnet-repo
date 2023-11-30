@@ -32,7 +32,7 @@
 #Create a csv file and add the header, only runs once on the first node
     - name: Create a csv file and put headers
       lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
+        dest: "{{ output_path }}{{ filename }}"
         line: >
           hostname,all_ipv4_addresses,all_ipv6_addresses,
           model,serialnum,version,
@@ -47,20 +47,20 @@
 #Write the device facts to CSV file
     - name: Output Information to CSV file
       lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
+        dest: "{{ output_path }}{{ filename }}"
         line: "{{ csv_data }}"
       when: ansible_net_iostype == 'IOS-XE'
 
     - name: Output Information to CSV file
       lineinfile:
-        dest: "{{ output_path }}/{{ filename }}"
+        dest: "{{ output_path }}{{ filename }}"
         line: "{{ csv_data }}"
       when: ansible_net_iostype == 'IOS'
 
 #Remove any blank newlines from the file, only runs once on the first node
     - name: Remove blank lines from csv file
       lineinfile:
-        path: "./{{ output_path }}/{{ filename }}"
+        path: "./{{ output_path }}{{ filename }}"
         state: absent
         regex: '^\s*$'
       when: inventory_hostname == groups.all[0]         
