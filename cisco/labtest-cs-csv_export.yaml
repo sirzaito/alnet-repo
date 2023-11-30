@@ -1,26 +1,12 @@
 ---
+- hosts: all
+  gather_facts: no
 
- - name: GATHER FACTS
-   hosts: all
-   connection: network_cli
-   gather_facts: yes  #<----Gather Facts Enabled 
+  tasks:
 
-   tasks:
-   
-    #NO VENDOR SPECIFIC MODULE LIKE ios_facts OR nxos_facts ANYMORE
-
-    - name: VIEW ALL ANSIBLE FACT KEYS
-      debug:
-       var: ansible_facts.keys()
-
-    - name: VIEW HOSTNAME
-      debug:
-        var: network_resources
-
-    - name: VIEW HOSTNAME
-      debug:
-        var: ansible_net_hostname
+  - name: GATHER FACTS
+    ios_facts:
     
-    - name: VIEW OS VERSION
-      debug:
-        var: ansible_net_version
+    register: facts
+
+  - debug: var=facts.stdout_lines
