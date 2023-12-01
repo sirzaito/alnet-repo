@@ -6,6 +6,9 @@
   vars:
     configs_dir: "/labbackup/"
   tasks:
+    - name: Register Timestamp
+      shell: date +%Y%m%d%H%M%S
+      register: timestamp
     - name: Access ansible net hostname
       ios_facts:
         gather_subset: all
@@ -24,4 +27,4 @@
          filename: "{{ date.stdout }}_{{al_hostname}}.cfg"
          dir_path: "/{{configs_dir}}{{al_directory}}{{al_hostname}}"
     - name: Tasks done
-      debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}."
+      debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}. TS {{ timestamp.stdout }}"
