@@ -7,7 +7,7 @@
     - name: get interface status
       ios_command:
         commands: 
-          - show interface status
+          - show ip int bri
       register: output
       
     - debug:
