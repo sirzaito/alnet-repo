@@ -7,7 +7,7 @@
   tasks:
   - name: Creates directory
     ansible.builtin.file:
-      path: ""/{{configs_dir}}{{al_directory}}{{al_hostname}}/json""
+      path: "/{{configs_dir}}{{al_directory}}{{al_hostname}}/json"
       state: directory
   - name: Register Timestamp
     shell: date +%Y%m%d%H%M%S
