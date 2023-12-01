@@ -8,7 +8,7 @@
     
     - name: get interface status
       nxos_command:
-        commands: show int status | json-pretty
+        commands: show int status
       register: output
       
     - debug:
