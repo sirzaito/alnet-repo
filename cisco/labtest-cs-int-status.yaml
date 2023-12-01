@@ -6,7 +6,7 @@
     
     - name: get interface status
       ios_command:
-        commands: "show int status | json-pretty"
+        commands: "show int status"
       register: output
       
     - debug:
