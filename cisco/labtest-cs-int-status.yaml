@@ -1,0 +1,17 @@
+  ---
+- name: Int status
+  hosts: all
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    
+    - name: get interface status
+      nxos_command:
+        commands: show int status | json-pretty
+      register: output
+      
+    - debug:
+        msg: "{{ item.interface }}"
+      when: item.state == "connected"
+      loop: "{{ output.stdout.0.TABLE_interface.ROW_interface }}"
