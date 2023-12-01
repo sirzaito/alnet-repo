@@ -12,4 +12,4 @@
     register: iosfacts_out
     ios_facts:
 
-  - copy: content="{{ iosfacts_out | to_nice_json }}" dest="/{{configs_dir}}{{al_directory}}{{al_hostname}}json/{{al_hostname}}_{{ timestamp.stdout }}_iosfacts.json"
+  - copy: content="{{ iosfacts_out | to_nice_json }}" dest="/{{configs_dir}}{{al_directory}}{{al_hostname}}/json/{{al_hostname}}_{{ timestamp.stdout }}_iosfacts.json"
