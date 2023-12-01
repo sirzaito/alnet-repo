@@ -5,6 +5,9 @@
   vars:
     configs_dir: "/labbackup/"
   tasks:
+  - name: Gather legacy and resource facts # Must, using legacy!!
+    cisco.ios.ios_facts:
+      gather_subset: all
   - name: Creates directory
     ansible.builtin.file:
       path: "/{{configs_dir}}{{al_directory}}{{al_hostname}}/json"
