@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  gather_facts: no
+  gather_facts: yes
   connection: network_cli
   vars:
     configs_dir: "/labbackup/"
