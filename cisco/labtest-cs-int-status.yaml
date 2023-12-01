@@ -11,6 +11,4 @@
       register: output
       
     - debug:
-        msg: "{{ item.interface }}"
-      when: item.state == "connected"
-      loop: "{{ output.stdout.0.TABLE_interface.ROW_interface }}"
+        msg: "{{ output }}"
