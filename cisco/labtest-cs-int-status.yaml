@@ -6,7 +6,8 @@
     
     - name: get interface status
       ios_command:
-        commands: "show int status"
+        commands: 
+          - show interface status
       register: output
       
     - debug:
