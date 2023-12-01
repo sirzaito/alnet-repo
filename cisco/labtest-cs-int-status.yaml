@@ -1,13 +1,12 @@
 ---
 - hosts: all
-  connection: network_cli
   gather_facts: false
 
   tasks:
     
     - name: get interface status
-      cisco.ios.ios_command:
-        commands: show int status | json-pretty
+      ios_command:
+        commands: "show int status | json-pretty"
       register: output
       
     - debug:
