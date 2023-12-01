@@ -1,6 +1,5 @@
   ---
-- name: Int status
-  hosts: all
+- hosts: all
   connection: network_cli
   gather_facts: false
 
