@@ -6,8 +6,8 @@
   tasks:
     
     - name: get interface status
-      ios_command:
-        commands: show int status
+      cisco.ios.ios_command:
+        commands: show int status | json-pretty
       register: output
       
     - debug:
