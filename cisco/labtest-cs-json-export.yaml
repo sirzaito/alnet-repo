@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: network_cli
+  vars:
+    configs_dir: "/labbackup/"
+  tasks:
+  - name: Register Timestamp
+    shell: date +%Y%m%d%H%M%S
+    register: timestamp
+  - name: GATHER FACTS TO JSON
+    register: iosfacts_out
+    ios_facts:
+
+  - copy: content="{{ iosfacts_out | to_nice_json }}" dest="/{{configs_dir}}{{al_directory}}{{al_hostname}}json/{{al_hostname}}_{{ timestamp.stdout }}_iosfacts.json"
